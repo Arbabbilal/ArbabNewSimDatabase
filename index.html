@@ -1,0 +1,354 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!--  GANDO TU YAHA BE AGIYA 😂 -->
+<!--  BC DONT CLONE IT 😷 OTHER WISE YOU'RE A BIG MC -->
+<!--  DEVELOPER  𝐀𝐫𝐛𝐚𝐛 ✘ 𝐀𝐑 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝐀𝐫𝐛𝐚𝐛 ✘ 𝐀𝐑 SIM DATABASE</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at center, #000 0%, #020202 100%);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* neon title */
+.title-border {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 18px;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 12px #00fff7;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.title-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 3px;
+  background: linear-gradient(90deg, #00fff7, #9b00ff, #00fff7);
+  background-size: 400%;
+  animation: neonBorder 6s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+@keyframes neonBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.simdata-wrap {
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+input[type="text"]:focus {
+  border-color: #0ff;
+  box-shadow: 0 0 10px #0ff;
+}
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(45deg, red, orange, yellow, lime, cyan, blue, violet, red);
+  background-size: 400%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: neon 6s linear infinite;
+  z-index: -1;
+}
+@keyframes neon {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+button:hover {
+  box-shadow: 0 0 15px #0ff;
+  color: #0ff;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+.loading { color: #0ff; text-shadow: 0 0 10px #0ff; margin-top: 10px; }
+.simdata-error {
+  color: #ff4d4d;
+  font-weight: bold;
+  text-shadow: 0 0 5px #f00;
+  margin-top: 10px;
+}
+.result-container {
+  margin-top: 15px;
+  text-align: left;
+  background: rgba(15,15,15,0.8);
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 10px rgba(0,255,255,0.1);
+}
+.result-label { font-weight: 600; color: #00fff7; }
+.result-value { color: #fff; margin-bottom: 8px; }
+
+/* Footer & Button & Image */
+footer {
+  width: 100%;
+  padding: 60px 0 30px 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.whatsapp-btn {
+  position: relative;
+  display: inline-block;
+  padding: 16px 34px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: transparent;
+  border-radius: 14px;
+  text-decoration: none;
+  overflow: hidden;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  text-shadow: 0 0 15px rgba(0,255,255,0.8);
+  box-shadow: 0 0 25px rgba(0,255,255,0.2);
+  transition: transform 0.2s ease;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0,255,255,0.6);
+}
+.whatsapp-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(270deg,
+    #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5,
+    #002bff, #7a00ff, #ff00c8, #ff0000,
+    #00ff99, #ff1493, #1e90ff, #ff4500,
+    #00ffcc, #ffff33, #cc00ff, #00ff00, #ff6600, #ff0099, #00ffff
+  );
+  background-size: 3000% 3000%;
+  animation: borderFlow 20s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-text {
+  background: linear-gradient(270deg,
+    #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5,
+    #002bff, #7a00ff, #ff00c8, #ff0000,
+    #00ff99, #ff1493, #1e90ff, #ff4500,
+    #00ffcc, #ffff33, #cc00ff, #00ff00, #ff6600, #ff0099, #00ffff
+  );
+  background-size: 4000% 4000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flowingText 10s linear infinite;
+  letter-spacing: 1px;
+}
+@keyframes flowingText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Protected image */
+.protected-img-border {
+  position: relative;
+  width: 280px;
+  margin-top: 25px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+.protected-img-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(270deg,
+    #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5,
+    #002bff, #7a00ff, #ff00c8, #ff0000,
+    #00ff99, #ff1493, #1e90ff, #ff4500,
+    #00ffcc, #ffff33, #cc00ff, #00ff00, #ff6600, #ff0099, #00ffff
+  );
+  background-size: 3000% 3000%;
+  animation: borderFlow 20s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 2;
+}
+.protected-img-border img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.img-error {
+  color: #ff0033;
+  font-weight: bold;
+  margin-top: 10px;
+  text-shadow: 0 0 10px #ff0000;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<div class="title-border">
+  <span>&#68;&#65;&#82;&#75;&#32;&#76;&#69;&#71;&#69;&#78;&#68;&#32;&#45;&#32;&#83;&#73;&#77;&#32;&#68;&#65;&#84;&#65;&#66;&#65;&#83;&#69;</span>
+</div>
+<p class="subtitle">&#83;&#73;&#77;&#32;&#47;&#32;&#67;&#78;&#73;&#67;&#32;&#73;&#78;&#70;&#79;&#82;&#77;&#65;&#84;&#73;&#79;&#78;&#32;&#82;&#69;&#84;&#82;&#73;&#69;&#86;&#65;&#76;&#32;&#83;&#89;&#83;&#84;&#69;&#77;</p>
+
+<div class="simdata-wrap">
+  <form id="simdata-form">
+    <input id="simdata_query" type="text" placeholder="ENTER NUMBER OR CNIC" required>
+    <button type="submit">🔍 SEARCH DATA</button>
+  </form>
+  <div id="simdata-results" class="result-container">
+    WAITING ... INPUT ANY NO.
+  </div>
+</div>
+
+<footer>
+  <a href="https://api.whatsapp.com/send?phone=+923477013895&text=Hello" target="_blank" class="whatsapp-btn">
+    💬 <span class="animated-text">JOIN WHATSAPP CHAT</span>
+  </a>
+
+  <div class="protected-img-border">
+    <img id="ArbabmodsImage" src="https://ibb.co/JRBQwg5f" alt="Arbab Mods Authorized Image"/>
+  </div>
+  <div id="imgError" class="img-error" style="display:none;">
+    &#68;&#97;&#114;&#107;&#32;&#76;&#101;&#103;&#101;&#110;&#100;&#32;&#51;&#51;&#51;&#32;&#105;&#115;&#32;&#109;&#121;&#32;&#102;&#97;&#116;&#104;&#101;&#114;
+  </div>
+</footer>
+
+<script>
+jQuery(document).ready(function($){
+  $('#simdata-form').on('submit', function(e){
+    e.preventDefault();
+    var input = $('#simdata_query').val().trim();
+    if(!input){ alert('Please enter mobile number or CNIC'); return; }
+
+    $('#simdata-results').html('<div class="loading"><i class="fas fa-spinner fa-spin"></i> SCANNING DATABASE...</div>');
+    const proxy = "https://api.allorigins.win/raw?url=";
+    const apiUrl = "https://fam-official.serv00.net/api/database.php?number=" + encodeURIComponent(input);
+
+    $.getJSON(proxy + encodeURIComponent(apiUrl), function(response){
+      if(response && response.success && response.data && response.data.length > 0){
+        let data = response.data[0];
+        let html = `
+          <div class="result-label">NAME:</div>
+          <div class="result-value">${data.name || 'N/A'}</div>
+          <div class="result-label">NUMBER:</div>
+          <div class="result-value">${data.number || 'N/A'}</div>
+          <div class="result-label">CNIC:</div>
+          <div class="result-value">${data.cnic || 'N/A'}</div>
+          <div class="result-label">ADDRESS:</div>
+          <div class="result-value">${data.address || 'N/A'}</div>
+          <div class="result-label">CREDIT:</div>
+          <div class="result-value">&#68;&#65;&#82;&#75;&#32;&#76;&#69;&#71;&#69;&#78;&#68;&#32;&#84;&#72;&#69;&#32;&#80;&#65;&#84;&#72;&#65;&#78;&#32;&#66;&#79;&#89;</div>
+        `;
+        $('#simdata-results').html(html);
+      } else {
+        $('#simdata-results').html('<div class="simdata-error">⚠️ No data found for this number.</div>');
+      }
+    }).fail(function(){
+      $('#simdata-results').html('<div class="simdata-error">❌ Failed to connect to the database (Proxy or API down).</div>');
+    });
+  });
+});
+
+// Image protection
+const img = document.getElementById('darkLegendImage');
+const errorMsg = document.getElementById('imgError');
+const allowedKey = 'eSIqgF5phakQ';
+if (!img.src.includes(allowedKey)) {
+  img.style.display = 'none';
+  errorMsg.style.display = 'block';
+}
+img.addEventListener('error', () => {
+  img.style.display = 'none';
+  errorMsg.style.display = 'block';
+});
+</script>
+</body>
+</html>
