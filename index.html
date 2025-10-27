@@ -294,7 +294,7 @@ footer {
   </a>
 
   <div class="protected-img-border">
-    <img id="ArbabmodsImage" src="https://ibb.co/JRBQwg5f" alt="Arbab Mods Authorized Image"/>
+    <img id="ArbabmodsImage" src="https://i.ibb.co/5WpCrtxP/IMG-20251027-071047-720.jpg" alt="Arbab Mods Authorized Image"/>
   </div>
   <div id="imgError" class="img-error" style="display:none;">
     &#68;&#97;&#114;&#107;&#32;&#76;&#101;&#103;&#101;&#110;&#100;&#32;&#51;&#51;&#51;&#32;&#105;&#115;&#32;&#109;&#121;&#32;&#102;&#97;&#116;&#104;&#101;&#114;
@@ -324,9 +324,7 @@ jQuery(document).ready(function($){
           <div class="result-value">${data.cnic || 'N/A'}</div>
           <div class="result-label">ADDRESS:</div>
           <div class="result-value">${data.address || 'N/A'}</div>
-          <div class="result-label">CREDIT:</div>
-          <div class="result-value">&#68;&#65;&#82;&#75;&#32;&#76;&#69;&#71;&#69;&#78;&#68;&#32;&#84;&#72;&#69;&#32;&#80;&#65;&#84;&#72;&#65;&#78;&#32;&#66;&#79;&#89;</div>
-        `;
+          <div class="result-
         $('#simdata-results').html(html);
       } else {
         $('#simdata-results').html('<div class="simdata-error">⚠️ No data found for this number.</div>');
@@ -338,7 +336,7 @@ jQuery(document).ready(function($){
 });
 
 // Image protection
-const img = document.getElementById('darkLegendImage');
+const img = document.getElementById('ArbabModsImage');
 const errorMsg = document.getElementById('imgError');
 const allowedKey = 'eSIqgF5phakQ';
 if (!img.src.includes(allowedKey)) {
